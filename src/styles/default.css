@@ -1,0 +1,56 @@
+h2 {
+    color: orangered;
+}
+
+h3 {
+    color: dodgerblue;
+}
+
+/* Create columns that float next to each other */
+.containerColumn {
+    float: left;
+    padding: 10px;
+}
+
+/* Responsive layout - makes columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+    .containerColumn {
+        width: 100%;
+    }
+}
+
+.categoryName {
+    font-weight: bold;
+    text-indent: 15px;
+
+}
+
+.categoryBalanceValue {
+    font-style: italic;
+}
+
+.categoryBalance {
+    text-indent: 30px;
+}
+
+.categoryBudgeted {
+    text-indent: 30px;
+}
+
+tbody {
+    border-collapse: collapse;
+    width: 5%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: lightgray}
+
+thead {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+}

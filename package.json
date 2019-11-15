@@ -1,0 +1,48 @@
+{
+  "name": "ynot",
+  "version": "0.0.1",
+  "description": "A tool using the YNAB API to log budget category changes transactionally",
+  "main": "src/index.js",
+  "scripts": {
+    "start-client-dev": "webpack-dev-server --open --mode development --config webpack.dev.config.js",
+    "start-client-prod": "webpack-dev-server --open --mode development --config webpack.prod.config.js",
+    "start-server-dev": "webpack --mode development --config webpack.server.config.js && node ./dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slater1/YNOT.git"
+  },
+  "author": "Doug Slater",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/slater1/YNOT/issues"
+  },
+  "homepage": "https://github.com/slater1/YNOT#readme",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "cors": "^2.8.5",
+    "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.7.2",
+    "riek": "^1.1.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.2",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "node-fetch": "latest",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}
