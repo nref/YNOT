@@ -3,19 +3,16 @@ const cors = require('cors');
 const mysql = require('mysql');
 const fetch = require("node-fetch");
 
-const token = 'd73c1b2c3bd79fb1b4b1ed6f9b4a951785784158e1a266613933d358ee2b80de';
-const budget_id = 'e3cd993c-d8ed-41ac-9eec-6741ab2fb599';
-const budget_name = 'dev';
+import config from "./config.js";
 
 const connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'ynot',
-    password : 'ynot',
-    database : 'ynot'
+    host     : config.db.host,
+    user     : config.db.user,
+    password : config.db.password,
+    database : config.db.dbName
 });
 
 const server = express();
-const port = 3000;
 
 server.use(cors());
 server.use(express.json()); // for parsing application/json
@@ -51,7 +48,12 @@ server.post('/transactions', async (req, res) => {
     const memo = req.body.memo;
 
     const sql = `INSERT INTO transaction (budget_name, budget_id, category_name, category_id, memo, value) VALUES ( \
-        '${budget_name}', '${budget_id}', '${category_name}','${category_id}', '${memo}', '${value}')`;
+        '${config.ynab.budgetName}', 
+        '${config.ynab.budgetId}', 
+        '${category_name}', 
+        '${category_id}', 
+        '${memo}', 
+        '${value}')`;
 
     console.log(sql);
 
@@ -68,7 +70,8 @@ server.post('/transactions', async (req, res) => {
     const today = new Date();
     const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-    const url = `https://api.youneedabudget.com/v1/budgets/${budget_id}/months/${date}/categories/${category_id}`;
+    const url = `https://api.youneedabudget.com/v1/budgets/
+        ${config.ynab.budgetId}/months/${date}/categories/${category_id}`;
 
     const body = {
         category:
@@ -82,7 +85,7 @@ server.post('/transactions', async (req, res) => {
     const promise = await fetch(url, {
         headers: {
             "Content-Type": 'application/json',
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${config.ynab.token}`
         },
         method: "patch",
         body: JSON.stringify(body)
@@ -106,14 +109,14 @@ server.get('/transactions', (req, res) => {
 
 server.get('/categories', async (req, res) => {
 
-    const url = `https://api.youneedabudget.com/v1/budgets/${budget_id}/categories`;
+    const url = `https://api.youneedabudget.com/v1/budgets/${config.ynab.budgetId}/categories`;
 
     console.log(`GET ${url}`);
 
     const promise = await fetch(url, {
         headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${config.ynab.token}`
         }
     });
 
@@ -124,4 +127,4 @@ server.get('/categories', async (req, res) => {
     res.send(json);
 });
 
-server.listen(port, () => console.log(`YNOT service listening on port ${port}`));
+server.listen(config.port, () => console.log(`YNOT service running with config = ${JSON.stringify(config)}`));

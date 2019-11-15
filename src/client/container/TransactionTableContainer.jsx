@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TransactionTable from "../presentation/TransactionTable.jsx";
+import config from "../config.js";
 
 export default class TransactionTableContainer extends Component {
     constructor(props) {
@@ -9,11 +10,12 @@ export default class TransactionTableContainer extends Component {
             transactions: []
         };
 
-        this.url = 'http://localhost:3000/transactions';
+        this.url = `http://${config.serviceHost}:${config.servicePort}/transactions`;
         this.handleMemoChanged = this.handleMemoChanged.bind(this);
     }
 
     fetchData (url) {
+        console.log(`GET ${this.url}`);
 
         fetch(url)
             .then(response => response.json())
