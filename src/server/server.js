@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const fetch = require("node-fetch");
-
-const token = 'b0ca60b27ee50a7b83b981a4790b0a0e8a4561e55a551934b82c79bafc6efbac';
-const budget_id = 'e3cd993c-d8ed-41ac-9eec-6741ab2fb599';
-const budget_name = 'dev';
+92278953cfe15d03c9cb7c692b9636eccbe3e4c2fc3d235ec87299fd67aacc86
+const token = 'YOUR TOKEN HERE';
+const budget_id = 'YOUR BUDGET ID HERE';
+const budget_name = 'YOUR BUDGET NAME HERE';
 
 const connection = mysql.createConnection({
     host     : 'localhost',
