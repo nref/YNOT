@@ -70,8 +70,7 @@ server.post('/transactions', async (req, res) => {
     const today = new Date();
     const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-    const url = `https://api.youneedabudget.com/v1/budgets/
-        ${config.ynab.budgetId}/months/${date}/categories/${category_id}`;
+    const url = `https://api.youneedabudget.com/v1/budgets/${config.ynab.budgetId}/months/${date}/categories/${category_id}`;
 
     const body = {
         category:
