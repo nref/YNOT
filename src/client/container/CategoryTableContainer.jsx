@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CategoryGroupTable from "../presentation/CategoryGroupTable.jsx";
+import config from "../config.js";
 
 export default class CategoryTableContainer extends Component {
     constructor(props) {
@@ -9,11 +10,14 @@ export default class CategoryTableContainer extends Component {
             category_groups: []
         };
 
+        this.url = `http://${config.serviceHost}:${config.servicePort}/categories`;
         this.handleBudgetedChanged = props.handleBudgetedChanged;
     }
 
     fetchData(url) {
         this.setState({ isLoading: true });
+
+        console.log(`GET ${this.url}`);
 
         fetch(url)
             .then(response => response.json())
@@ -21,7 +25,7 @@ export default class CategoryTableContainer extends Component {
     }
 
     componentDidMount() {
-        this.fetchData('http://localhost:3000/categories');
+        this.fetchData(this.url);
     }
 
     render() {
