@@ -1,8 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 clientConfig = {
     entry: {
         server: './src/index.js',
+    },
+    output: {
+        filename: 'client.js'
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 80
     },
     module: {
         rules: [

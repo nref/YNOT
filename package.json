@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start-client-dev": "webpack-dev-server --open --mode development --config webpack.dev.config.js",
-    "start-client-prod": "webpack --mode production --config webpack.prod.config.js",
+    "start-client-prod": "webpack-dev-server --open --mode production --config webpack.prod.config.js",
     "start-server-dev": "webpack --mode development --config webpack.server.config.js && node ./dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
