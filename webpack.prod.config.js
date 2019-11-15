@@ -11,7 +11,9 @@ clientConfig = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 80
+	host: '0.0.0.0',
+	port: 80,
+	disableHostCheck: true
     },
     module: {
         rules: [
