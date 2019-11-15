@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const fetch = require("node-fetch");
-92278953cfe15d03c9cb7c692b9636eccbe3e4c2fc3d235ec87299fd67aacc86
+
 const token = 'YOUR TOKEN HERE';
 const budget_id = 'YOUR BUDGET ID HERE';
 const budget_name = 'YOUR BUDGET NAME HERE';
